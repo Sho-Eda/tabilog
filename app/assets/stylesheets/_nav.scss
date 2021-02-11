@@ -26,19 +26,24 @@ header{
 }
 
 .header_menus{
-    float: right;
+    display: flex;
+    justify-content: flex-end;
+    text-align: center;
     margin-right: 20px;
+    text-decoration: none;
+    
+}
+
+.header_menus li{
+    padding-right: 20px;
     text-decoration: none;
 }
 
-ul{
-    text-decoration: none;
-}
 
 .header_menus a{
     color: black;
     font-size: 18px;
     line-height: 64px;
-    text-decoration: none;
+    // text-decoration: none;
 }
 

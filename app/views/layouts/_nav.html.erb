@@ -1,11 +1,23 @@
 <header>
+       
+      <% if logged_in? %>
+      <div class="header_logo">
+        <!--ユーザ詳細に飛ばしたい-->
+        <%= link_to "旅ログ", user_path(@user) %>
+      </div>
+       
+      <ul class="header_menus">
+        <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+      </ul>  
+      <% else %>
       <div class="header_logo">
         <%= link_to "旅ログ", "/" %>
       </div>
-      <ul class="header_menus">
-        <li>
-          <!--<= link_to("旅ログとは", "/about") %>-->
-           <%= link_to '新規登録', signup_path %>
-        </li>
-      </ul>
+       
+        <ul class="header_menus">
+          <li><%= link_to '新規登録', signup_path %></li>
+          <li><%= link_to 'ログイン', login_path %></li>
+        </ul>
+       
+      <% end %>  
 </header>
