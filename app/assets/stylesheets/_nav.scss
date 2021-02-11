@@ -1,0 +1,44 @@
+header{
+    widht: 100%;
+    height: 70px;
+    background: white;
+    // position: absolute;
+    z-index: 1;
+}
+
+.header_logo{
+    font-weight: bold;
+    float: left;
+    padding-left: 20px;
+    color: black;
+    font-size: 30px;
+    line-height: 64px;
+    text-decoration: none;
+    
+}
+
+
+.header_logo a{
+    color: black;
+    font-size: 30px;
+    line-height: 64px;
+    // text-decoration: none;
+}
+
+.header_menus{
+    float: right;
+    margin-right: 20px;
+    text-decoration: none;
+}
+
+ul{
+    text-decoration: none;
+}
+
+.header_menus a{
+    color: black;
+    font-size: 18px;
+    line-height: 64px;
+    text-decoration: none;
+}
+
