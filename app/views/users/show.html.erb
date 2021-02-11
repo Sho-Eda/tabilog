@@ -4,5 +4,7 @@
             <h1><%= @user.name %></h1>
             <p><%= @user.introduction %></p>
         </div>
-    </div>    
+    </div>   
+    
+    <%= link_to("編集", "/users/#{@user.id}/edit") %>
 </div>    
