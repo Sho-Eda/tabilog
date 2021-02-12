@@ -1,4 +1,14 @@
+<% if logged_in? %>
+<div class="top_main">    
+    <div class="top_messages">
+    <h1>旅ログ</h1>
+    <p>Welcome to Tabilog<P>
+    </div>
+    
+    
+</div>
 
+<% else %>
 <div class="top_main">    
     <div class="top_messages">
     <h1>旅ログへようこそ</h1>
@@ -8,4 +18,4 @@
     
     
 </div>
-
+<% end %>

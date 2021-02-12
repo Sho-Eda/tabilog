@@ -3,7 +3,7 @@
       <% if logged_in? %>
       <div class="header_logo">
         <!--ユーザ詳細に飛ばしたい-->
-        <%= link_to "旅ログ", user_path(@user) %>
+        <%= link_to "旅ログ", user_path(current_user) %>
       </div>
        
       <ul class="header_menus">
