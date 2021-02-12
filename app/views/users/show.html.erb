@@ -1,10 +1,16 @@
 <div class="user">
     <div class="user_show">
         <div class="user_info">
+            <img class="mr-2 rounded" src="<%= gravatar_url(current_user, { size: 100 }) %>" alt="">
             <h1><%= @user.name %></h1>
             <p><%= @user.introduction %></p>
         </div>
     </div>   
     
     <%= link_to("編集", "/users/#{@user.id}/edit") %>
+    
+    <%= link_to("新規投稿", "/posts/new") %>
+    
+    
+    <%= render "posts/posts", posts:@posts %>
 </div>    

@@ -4,6 +4,9 @@ class UsersController < ApplicationController
   
   def show
     set_user
+
+    @posts = current_user.posts.order(id: :desc).page(params[:page])
+
   end
 
   def new
