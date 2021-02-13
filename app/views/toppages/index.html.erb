@@ -1,21 +1,31 @@
 <% if logged_in? %>
-<div class="top_main">    
-    <div class="top_messages">
-    <h1>旅ログ</h1>
-    <p>Welcome to Tabilog<P>
-    </div>
-    
-    
+<div class="top_main">   
+    <div calss="main_visual">
+        <div class="top_messages">
+        <h1>旅ログ</h1>
+        <p>Welcome to Tabilog<P>
+        </div>
+    </div>    
 </div>
 
 <% else %>
-<div class="top_main">    
-    <div class="top_messages">
-    <h1>旅ログへようこそ</h1>
-    <p>Welcome to Tabilog!</p>
-    <%= link_to '新規登録', signup_path, class: 'btn btn-lg btn-primary' %>
-    </div>
-    
+<div class="top_main">  
+    <div class="main_visual">
+        <div class="top_messages">
+            <h1>旅の思い出を<br>シェアしよう！</h1>
+            <p>Welcome to Tabilog!</p>
+        
+        </div>
+        <div class="top_btn">
+            <div class="signup_btn">
+            <%= link_to '新規登録', signup_path, class: 'btn btn-default' %>
+            </div>
+       
+            <div class="login_btn">
+                <%= link_to 'ログイン', login_path, class: 'btn btn-default' %>
+            </div>    
+        </div>     
+    </div>    
     
 </div>
 <% end %>

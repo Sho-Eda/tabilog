@@ -4,7 +4,7 @@
       <img class="mr-2 rounded" src="<%= gravatar_url(post.user, { size: 50 }) %>" alt="">
       <div class="media-body">
         <div>
-          <%= link_to post.user.name, user_path(post.user) %> <span class="text-muted">posted at <%= post.created_at %></span>
+          <%= link_to post.user.name, user_path(post.user) %> <span class="text-muted">投稿日時 <%= post.created_at %></span>
         </div>
         <div>
           <p><%= post.content %></p>

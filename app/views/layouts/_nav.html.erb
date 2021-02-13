@@ -3,7 +3,8 @@
       <% if logged_in? %>
       <div class="header_logo">
         <!--ユーザ詳細に飛ばしたい-->
-        <%= link_to "旅ログ", user_path(current_user) %>
+        <%= link_to embedded_svg("tabilog_logo.svg", class: "logo_svg"), user_path(current_user) %>
+        <!--<= link_to "旅ログ", user_path(current_user) %>-->
       </div>
        
       <ul class="header_menus">
@@ -11,7 +12,7 @@
       </ul>  
       <% else %>
       <div class="header_logo">
-        <%= link_to "旅ログ", "/" %>
+        <%= link_to embedded_svg("tabilog_logo.svg", class: "logo_svg"), "/" %>
       </div>
        
         <ul class="header_menus">
