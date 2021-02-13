@@ -22,11 +22,11 @@ class PostsController < ApplicationController
   end
   
   def edit
-    @post = current_user.posts.find_by(id: params[:id])
+    @post=Post.find_by(id: params[:id])
   end
   
   def update
-    @post = current_user.posts.find_by(id: params[:id])
+    @post = current_user.posts.find(id: params[:id])
     
     if @post.update(post_params)
       flash[:success] = 'Message は正常に更新されました'

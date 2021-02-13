@@ -1,14 +1,14 @@
 <%= form_with(model: @post, local: true) do |f| %>
 
-    <!--<= f.label :image, '画像' %>-->
-    <!--<= f.file_field :image %>-->
+    <%= f.label :image, '画像' %>
+    <%= f.file_field :image %>
     
-    <!--< if @post.image.attached? %>-->
-    <!--    <= image_tag @post.image %>-->
-    <!--< end %>-->
+    <% if @post.image.attached? %>
+         <%= image_tag @post.image.variant(combine_options:{gravity: :center, resize:"300x300^", crop:"300x300+0+0"}).processed %>
+    <% end %>
     
     <div class="form-group">
         <%= f.text_area :content, class: 'form-control', rows: 5 %>
     </div>
-    <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+        <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
 <% end %>
