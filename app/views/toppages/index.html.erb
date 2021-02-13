@@ -1,11 +1,17 @@
 <% if logged_in? %>
-<div class="top_main">   
-    <div calss="main_visual">
+<div class="top_main">  
+    <div class="main_visual">
         <div class="top_messages">
-        <h1>旅ログ</h1>
-        <p>Welcome to Tabilog<P>
+            <h1>旅の思い出を<br>シェアしよう！</h1>
+        
         </div>
+        <div class="top_btn">
+            <div class="signup_btn">
+            <%= link_to 'マイページ', current_user, class: 'btn btn-default' %>
+            </div>
+        </div>     
     </div>    
+    
 </div>
 
 <% else %>

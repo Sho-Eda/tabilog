@@ -1,5 +1,6 @@
 <ul class="list-unstyled">
   <% posts.each do |post| %>
+        
     <li class="media mb-3">
       <img class="mr-2 rounded" src="<%= gravatar_url(post.user, { size: 50 }) %>" alt="">
       <div class="media-body">
@@ -8,6 +9,20 @@
         </div>
         <div>
           <p><%= post.content %></p>
+          
+          <% if post.image.attached? %>
+            <%= image_tag post.image.variant(combine_options:{gravity: :center, resize:"300x300^", crop:"300x300+0+0"}).processed %>
+          <% end %>
+          <!--<= image_tag post.image.variant(resize:'800x800').processed %>-->
+          
+        </div>
+        
+        <!--削除-->
+        <div>
+          <% if current_user == post.user %>
+            <%= link_to "削除", post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+            <%= link_to "編集",  edit_post_path, class: 'btn btn-success btn-sm' %>
+          <% end %>
         </div>
       </div>
     </li>
