@@ -3,9 +3,11 @@ class UsersController < ApplicationController
   
   
   def show
+    # set_user
     set_user
 
-    @posts = current_user.posts.order(id: :desc).page(params[:page])
+    @posts = @user.posts.order(id: :desc).page(params[:page])
+    counts(@user)
 
   end
 
@@ -26,29 +28,40 @@ class UsersController < ApplicationController
   end
 
   def edit
-    set_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to  current_user
+    end
   end
   
+  
   def update
-    set_user
+    @user = User.find(params[:id])
     
-    if @user.update(user_params)
-      flash[:success] = "正常に更新されました"
-      redirect_to @user
+    #編集しようとしてるユーザーがログインユーザーとイコールかをチェック
+    if current_user == @user
+       if @user.update(user_params)
+        flash[:success] = "正常に更新されました"
+        redirect_to current_user
+      else
+        flash.now[:danger] = "更新に失敗しました"
+        render :edit
+      end
     else
-      flash.now[:danger] = "更新に失敗しました"
-      render :edit
-    end
+      redirect_to current_user
+    end  
   end
   
   private
   
   def set_user
-    @user = User.find_by(params[:id])
+    @user = User.find(params[:id])
   end
   
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :introduction)
   end
+  
+  
   
 end

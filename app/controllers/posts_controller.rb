@@ -1,9 +1,14 @@
 class PostsController < ApplicationController
-  before_action :require_user_logged_in, only: [:show, :edit]
+  before_action :require_user_logged_in
   before_action :corrent_user, only: [:destroy]
   
+  def show
+    @post = Post.find(params[:id])
+    
+  end
+  
   def new
-     @post = current_user.posts.build  # form_with 用
+     @post = current_user.posts.build  
   end
 
   def create
@@ -16,24 +21,24 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    flash[:success] = 'メッセージを削除しました。'
-    redirect_back current_user
+    flash[:success] = '削除しました。'
+    redirect_to current_user
     
   end
   
   def edit
-    @post=Post.find_by(id: params[:id])
+    @post = Post.find_by(id: params[:id])
   end
   
   def update
-    @post = current_user.posts.find(id: params[:id])
+    @post = Post.find_by(id: params[:id])
     
     if @post.update(post_params)
-      flash[:success] = 'Message は正常に更新されました'
-      redirect_to corrent_user
+      flash[:success] = '更新しました'
+      redirect_to current_user
       
     else
-      flash.now[:danger] = 'Message は更新されませんでした'
+      flash.now[:danger] = '更新されませんでした'
       render :edit
     end
   end

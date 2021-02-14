@@ -1,0 +1,14 @@
+<div class="post_image">
+    <% if @post.image.attached? %>
+        <%= image_tag @post.image.variant(combine_options:{gravity: :center, resize:"500x500^", crop:"500x500+0+0"}).processed %>
+    <% end %>
+    
+<!--編集と削除-->
+    <div>
+      <% if current_user == @post.user %>
+        <%= link_to "削除", @post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+        <%= link_to "編集",  edit_post_path(@post), class: 'btn btn-success btn-sm' %>
+      <% end %>
+    </div>
+    
+</div>

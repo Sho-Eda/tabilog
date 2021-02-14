@@ -1,16 +1,32 @@
 <div class="user">
     <div class="user_show">
         <div class="user_info">
-            <img class="mr-2 rounded" src="<%= gravatar_url(current_user, { size: 100 }) %>" alt="">
-            <h1><%= @user.name %></h1>
-            <p><%= @user.introduction %></p>
+            <div class="user_info_left">    
+              <img class="user_icon", src="<%= gravatar_url(current_user, { size:200 }) %>" alt="image">
+            </div>
+            
+            <div class="user_info_right">
+              <div class="user_name_edit">
+                <h1><%= @user.name %></h1>
+               <% if @user == current_user %>
+                 <div class="user_edit">
+                  <%= link_to "プロフィール編集", "/users/#{@user.id}/edit", class: 'btn btn-default' %>
+                  </div>
+               <% else %>
+                 <dvi></dvi>
+               <% end %>
+       
+              </div>
+                <p><%= @user.introduction %></p>
+            </div>  
         </div>
+                 
+        
     </div>   
     
-    <%= link_to("編集", "/users/#{@user.id}/edit") %>
-    
-    <%= link_to("新規投稿", "/posts/new") %>
-    
+    <div class="post_new">
+    <%= link_to "新規投稿", "/posts/new", class: 'btn btn-default' %>
+    </div>
     
     <%= render "posts/posts", posts:@posts %>
 </div>    
