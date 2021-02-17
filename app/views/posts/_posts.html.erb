@@ -4,6 +4,7 @@
           
       <div class="media">
         <div class="media-body">
+          
             <% if post.image.attached? %>
               <%= link_to (image_tag post.image.variant(combine_options:{gravity: :center, resize:"300x300^", crop:"300x300+0+0"}).processed), post_path(post) %>
             <% end %>

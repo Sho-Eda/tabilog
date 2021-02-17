@@ -18,15 +18,35 @@
        
               </div>
                 <p><%= @user.introduction %></p>
+                <ul>
+                    <li><a href="<%= followings_user_path(@user) %>"<%= 'active' if current_page?(followings_user_path(@user)) %>">フォロー中 </a></li>
+                    <a href ="<%= followings_user_path(@user) %>"<%= 'active' if current_page?(followings_user_path(@user)) %>"><%= @count_followings %></a>
+                    
+                    <li><a href="<%= followers_user_path(@user) %>" <%= 'active' if current_page?(followers_user_path(@user)) %>">フォロワー</a></li>
+                    <%= @count_followers %>
+                </ul>
             </div>  
+            
         </div>
                  
         
     </div>   
     
-    <div class="post_new">
-    <%= link_to "新規投稿", "/posts/new", class: 'btn btn-default' %>
-    </div>
+    <!--< if @user == current_user %>-->
+        <div class="btn_all">
+            <div class="post_btn">
+            <%= link_to "新規投稿", "/posts/new", class: 'btn' %>
+            </div>
+            
+            <div class="follow_btn">
+                <%= render 'relationships/follow_button', user: @user, class: 'btn' %>    
+            </div>>
+        </div> 
+    <!--< else %>-->
+            <!--<div class="post_btn">-->
+            <!--<= link_to "新規投稿", "/posts/new", class: 'btn' %>-->
+            <!--</div-->
+    <!--< end %>-->
     
     <%= render "posts/posts", posts:@posts %>
 </div>    

@@ -64,3 +64,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'kaminari'
 
 gem 'mini_magick', '~> 4.8'
+
+gem "aws-sdk-s3", require: false

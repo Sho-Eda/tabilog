@@ -67,16 +67,16 @@
    
 }
 
-.post_new{
+.btn_all{
     display: flex;
     justify-content: center;
 }
 
-
-.post_new .btn{
-    width: 20%;
+.post_btn .btn{
+    width: 100%;
     height: auto;
     margin-top: 100px;
+    margin-right:50px;
     background:  #ffcc00;
     font-size: 20px;
     font-weight: 700;
@@ -85,3 +85,19 @@
     border: 2px solid black;
     color: #000;
 }
+
+
+.follow_btn .btn{
+    width: 100%;
+    height: auto;
+    margin-top: 100px;
+    margin-left: 40px;
+    // background:  #ffcc00;
+    font-size: 20px;
+    font-weight: 700;
+    padding-top: 10px;
+    letter-spacing: 2px;
+    border: 2px solid black;
+    // color: #000;
+}
+
