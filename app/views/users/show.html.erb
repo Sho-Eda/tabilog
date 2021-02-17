@@ -2,7 +2,7 @@
     <div class="user_show">
         <div class="user_info">
             <div class="user_info_left">    
-              <img class="user_icon", src="<%= gravatar_url(current_user, { size:200 }) %>" alt="image">
+              <img class="user_icon", src="<%= gravatar_url(@user, { size:200 }) %>" alt="image">
             </div>
             
             <div class="user_info_right">
@@ -19,11 +19,9 @@
               </div>
                 <p><%= @user.introduction %></p>
                 <ul>
-                    <li><a href="<%= followings_user_path(@user) %>"<%= 'active' if current_page?(followings_user_path(@user)) %>">フォロー中 </a></li>
-                    <a href ="<%= followings_user_path(@user) %>"<%= 'active' if current_page?(followings_user_path(@user)) %>"><%= @count_followings %></a>
-                    
-                    <li><a href="<%= followers_user_path(@user) %>" <%= 'active' if current_page?(followers_user_path(@user)) %>">フォロワー</a></li>
-                    <%= @count_followers %>
+                    <li class="nav-item"><a href="<%= followings_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followings_user_path(@user)) %>">Followings  <span class="badge badge-secondary"><%= @count_followings %></span></a></li>
+                    <li class="nav-item"><a href="<%= followers_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followers_user_path(@user)) %>">Followers  <span class="badge badge-secondary"><%= @count_followers %></span></a></li>
+                    <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">Favorites<span class="badge badge-secondary"><%= @count_likes %></span></a></li>
                 </ul>
             </div>  
             
@@ -32,21 +30,25 @@
         
     </div>   
     
-    <!--< if @user == current_user %>-->
+    <% if @user == current_user %>
         <div class="btn_all">
             <div class="post_btn">
-            <%= link_to "新規投稿", "/posts/new", class: 'btn' %>
+            <%= link_to "投稿する", "/posts/new", class: 'btn' %>
             </div>
             
+            <!--<div class="follow_btn">-->
+            <!--    <= render 'relationships/follow_button', user: @user, class: 'btn' %>    -->
+            <!--</div>>-->
+        </div> 
+    <% else %>
+        <div class="btn_all">
             <div class="follow_btn">
                 <%= render 'relationships/follow_button', user: @user, class: 'btn' %>    
             </div>>
-        </div> 
-    <!--< else %>-->
-            <!--<div class="post_btn">-->
-            <!--<= link_to "新規投稿", "/posts/new", class: 'btn' %>-->
-            <!--</div-->
-    <!--< end %>-->
+        </div>    
+    <% end %>
     
+    <div class="user_post">
     <%= render "posts/posts", posts:@posts %>
+    </div>
 </div>    
