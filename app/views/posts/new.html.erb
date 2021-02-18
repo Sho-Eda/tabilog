@@ -1,9 +1,9 @@
 <%= form_with(model: @post, local: true) do |f| %>
         <%= f.label :image, '画像' %>
-        <%= f.file_field :image %>
+        <%= f.file_field :images, multiple: true  %>
         
-        <% if @post.image.attached? %>
-          <%= image_tag @post.image %>
+        <% if @post.images.attached? %>
+          <%= image_tag images %>
         <% end %>
         
         <div class="form-group">

@@ -46,7 +46,7 @@ class PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:content, :image)
+    params.require(:post).permit(:content, images: [])
     # if image = params[:content][:image]
     # @post.image.attach(image)
     # end
