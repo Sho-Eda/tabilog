@@ -118,3 +118,21 @@
     display: flex;
     justify-content: center;
 }
+
+// フォロー、お気に入りボタン
+
+.relationships_btn{
+    color: black;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.relationships_btn_all{
+     text-align: center;
+     padding-left: 35px;
+     font-size: 17px;
+     font-weight: 600;
+}

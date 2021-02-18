@@ -18,11 +18,41 @@
        
               </div>
                 <p><%= @user.introduction %></p>
-                <ul>
-                    <li class="nav-item"><a href="<%= followings_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followings_user_path(@user)) %>">Followings  <span class="badge badge-secondary"><%= @count_followings %></span></a></li>
-                    <li class="nav-item"><a href="<%= followers_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followers_user_path(@user)) %>">Followers  <span class="badge badge-secondary"><%= @count_followers %></span></a></li>
-                    <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">Favorites<span class="badge badge-secondary"><%= @count_likes %></span></a></li>
-                </ul>
+              <div class="relationships_btn">    
+                <!--<ul>-->
+                    <!--<li class="nav-item"><a href="<= followings_user_path(@user) %>" class="nav-link <= 'active' if current_page?(followings_user_path(@user)) %>">Followings  <span class="badge badge-secondary"><%= @count_followings %></span></a></li>-->
+                    <!--<li class="nav-item"><a href="<= followers_user_path(@user) %>" class="nav-link <= 'active' if current_page?(followers_user_path(@user)) %>">Followers  <span class="badge badge-secondary"><%= @count_followers %></span></a></li>-->
+                    <!--<li class="nav-item"><a href="<= likes_user_path(@user) %>" class="nav-link <= 'active' if current_page?(likes_user_path(@user)) %>">Favorites<span class="badge badge-secondary"><%= @count_likes %></span></a></li>-->
+                    <div class="relationships_btn_all">
+                        <div>
+                            <a href="<%= followings_user_path(@user) %>">フォロー中</a>
+                        </div>
+                        <div>
+                            <a href="<%= followings_user_path(@user) %>"><%= @count_followings %></a>
+                        </div>
+                    </div>
+                    
+                    <div class="relationships_btn_all">
+                        <div>
+                            <a href="<%= followers_user_path(@user) %>">フォロワー</a>
+                        </div>
+                        <div>
+                            <a href="<%= followers_user_path(@user) %>"><%= @count_followers %></a>
+                        </div>
+                    </div>
+                    
+                    <div class="relationships_btn_all">
+                        <div>
+                            <a href="<%= likes_user_path(@user) %>">いいね</a>
+                        </div>
+                        <div>
+                            <a href="<%= likes_user_path(@user) %>"><%= @count_likes %></a>
+                        </div>
+                    </div>
+                    
+                    
+                <!--</ul>-->
+              </div>    
             </div>  
             
         </div>
@@ -49,6 +79,6 @@
     <% end %>
     
     <div class="user_post">
-    <%= render "posts/posts", posts:@posts %>
+        <%= render "posts/posts", posts:@posts %>
     </div>
 </div>    

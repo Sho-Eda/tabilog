@@ -6,5 +6,5 @@ class Post < ApplicationRecord
     # 画像サイズ
     # image_tag @post.image.variant(resize_to_fill: [128, 128])
     
-    has_many_attached :images
+    has_one_attached :image
 end

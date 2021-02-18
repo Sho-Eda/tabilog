@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :corrent_user, only: [:destroy]
   
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:id]).page(params[:page]).per(3)
     
   end
   
@@ -46,7 +46,7 @@ class PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:content, images: [])
+    params.require(:post).permit(:content, :image)
     # if image = params[:content][:image]
     # @post.image.attach(image)
     # end

@@ -1,21 +1,21 @@
 <div class="media_all">
-  <!--<ul class="list-unstyled">-->
+  <ul class="list-unstyled">
     <% posts.each do |post| %>
           
       <div class="media">
         <div class="media-body">
           
-            <% if post.images.attached? %>
-              <% post.images.each do |image| %>
-                <%= link_to (image_tag image.variant(combine_options:{gravity: :center, resize:"300x300^", crop:"300x300+0+0"}).processed), post_path(post) %>
-              <% end %>
+            <% if post.image.attached? %>
+              <!--< post.image.each do |image| %>-->
+                <%= link_to (image_tag post.image.variant(combine_options:{gravity: :center, resize:"300x300^", crop:"300x300+0+0"}).processed), post_path(post) %>
+              <!--< end %>-->
             <% end %>
         </div>
       </div>
       
     <% end %>
     <%= paginate posts %>
-  <!--</ul>-->
+  </ul>
   
    
 </div>
