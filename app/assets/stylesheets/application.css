@@ -28,3 +28,7 @@ emojione mozilla,
 twemoji mozilla,
 segoe ui symbol;
 }
+
+ul{
+    list-style: none;
+}

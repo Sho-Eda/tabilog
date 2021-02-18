@@ -1,7 +1,9 @@
 <div class="post_image">
-    <% if @post.image.attached? %>
-        <%= image_tag @post.image.variant(combine_options:{gravity: :center, resize:"400x400^", crop:"500x500+0+0"}).processed %>
-    <% end %>
+    <!--< if @post.image.attached? %>-->
+        <% @post.images.each do |image|%>    
+            <%= image_tag image.variant(combine_options:{gravity: :center, resize:"400x400^", crop:"500x500+0+0"}).processed %>
+        <% end %>
+    <!--< end %>    -->
     
 </div>    
     
