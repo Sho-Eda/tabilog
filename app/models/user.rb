@@ -13,10 +13,10 @@ class User < ApplicationRecord
     has_many :reverses_of_relationship, class_name: 'Relationship', foreign_key: 'follow_id'
     has_many :followers, through: :reverses_of_relationship, source: :user
     
-    # 「自分がお気に入りしているMicropost」への参照を表している。
     has_many :favorites
-    # 中間テーブルを経由して相手の情報を取得できるようにするためには through を使用する。
     has_many :likes, through: :favorites, source: :post
+    
+    has_many :comments, dependent: :destroy
     
     
     def follow(other_user)

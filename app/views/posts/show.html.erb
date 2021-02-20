@@ -1,9 +1,12 @@
 <div class="post_show">
-    <div class="post_box">
+  <div class="post_box">
+    <div class="post_box_left">
         <div class="post_image">
-            <%= image_tag @post.image.variant(combine_options:{gravity: :center, resize:"400x400^", crop:"500x500+0+0"}).processed %>
-        </div>    
+            <%= image_tag @post.image.variant(combine_options:{gravity: :center, resize:"400x400^", crop:"500x500+0+0"}).processed, class: "post_img" %>
+        </div>   
+     </div>    
         
+    <div class="post_box_right">    
         <div class="post_content">
             <%= @post.content  %>
         </div>   
@@ -12,12 +15,38 @@
         <div>
           <% if current_user == @post.user %>
             <%= link_to "削除", @post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
-            <%= link_to "編集",  edit_post_path(@post), class: 'btn btn-success btn-sm' %>
+            <%= link_to "編集", edit_post_path(@post), class: 'btn btn-success btn-sm' %>
           <% end %>
         </div>
         <div>
         <%= render 'favorites/favorite_button', post: @post %>
         </div>    
         
-    </div>
+        
+        <%= form_with model: [@post,@comment], local: true do |f|%>
+          <div>
+           <%= f.text_field :comment %>
+          </div>
+          <%= f.submit %>
+        <% end %>
+        
+         <% @comments.each do |c| %>
+          <div>
+            <%= link_to c.user.name, [c.user] %>
+          </div>
+          <div>
+            <%= c.comment %>
+          </div>
+          <%  if c.user == current_user  %>
+            <div>
+              <%= link_to "delete", [@post, c], method: :delete %>  
+            </div>
+          <% end %>
+          
+        <% end %>
+            
+   
+    
+  </div>  
+  </div>
 </div>    
