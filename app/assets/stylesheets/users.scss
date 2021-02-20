@@ -4,7 +4,7 @@
 .user{
     width: 100%;
     height: 480px;
-    background: #f8f4e6;
+    background: #F5DF4D;
     margin: 0;
     margin-bottom: 0;
     padding-bottom: 0;
@@ -88,7 +88,7 @@
     height: auto;
     margin-top: 80px;
     margin-right:50px;
-    background:  #484848;
+    background:  #939597;
     font-size: 20px;
     font-weight: 700;
     padding-top: 10px;
@@ -129,10 +129,50 @@
 }
 
 
-
 .relationships_btn_all{
      text-align: center;
      padding-left: 35px;
      font-size: 17px;
      font-weight: 600;
+}
+
+// 編集ページ
+
+.user_edit_page{
+    height: 1000px;
+    align-items: center;
+    background: #F5DF4D;
+    justify-items: center;
+}
+
+.user_edit_page h2{
+    text-align: center;
+}
+
+.form_all{
+    width: 50%;
+    height: 90%;
+    background: #fff;
+    margin: 60px auto;
+    padding-top: 100px;
+    text-align: center;
+    padding-left: 75px;
+    // border: 2px solid black;
+  
+}
+
+.form_block{
+    padding-top: 30px;
+    text-align: left;
+}
+
+.form{
+    outline: none;
+    width: 70%;
+    height: 70%;
+    border: none;
+    border-bottom: 1px solid #939597;
+    background-color: #fff;
+    margin: 20px auto;
+    font-size: 20px;
 }

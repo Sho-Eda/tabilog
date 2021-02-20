@@ -1,6 +1,5 @@
-// Place all the styles related to the posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// パーシャル
+
 .media_all{
     margin: 50px auto;
     padding: 0 auto;
@@ -11,9 +10,6 @@
     display: inline-flex;
     justify-content: flex-start;
     flex-wrap:wrap;
-    
-    // align-items center;
-    // margin-top: 20px;
     margin-left: 175px;
 }
 
@@ -22,3 +18,25 @@
     margin: 0 50px 50px 0;
 
 }
+
+// 詳細ページ
+
+.post_show{
+    height: 100vh;
+    background: #939597;
+    position:relative;
+}
+
+.post_box{
+    width: 80%;
+    height: 70%;
+    background: white;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    position:absolute
+}
+
+

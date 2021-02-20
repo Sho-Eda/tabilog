@@ -1,19 +1,23 @@
-<div class="post_image">
-    <% if @post.image.attached? %>
-        <!--< @post.image.each do |image|%>    -->
+<div class="post_show">
+    <div class="post_box">
+        <div class="post_image">
             <%= image_tag @post.image.variant(combine_options:{gravity: :center, resize:"400x400^", crop:"500x500+0+0"}).processed %>
-        <!--< end %>-->
-    <% end %>    
-    
-</div>    
-    
-<!--編集と削除-->
-    <div>
-      <% if current_user == @post.user %>
-        <%= link_to "削除", @post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
-        <%= link_to "編集",  edit_post_path(@post), class: 'btn btn-success btn-sm' %>
-      <% end %>
+        </div>    
+        
+        <div class="post_content">
+            <%= @post.content  %>
+        </div>   
+            
+          <!--編集と削除-->
+        <div>
+          <% if current_user == @post.user %>
+            <%= link_to "削除", @post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+            <%= link_to "編集",  edit_post_path(@post), class: 'btn btn-success btn-sm' %>
+          <% end %>
+        </div>
+        <div>
+        <%= render 'favorites/favorite_button', post: @post %>
+        </div>    
+        
     </div>
-    <div>
-    <%= render 'favorites/favorite_button', post: @post %>
-    </div>    
+</div>    

@@ -14,19 +14,21 @@
  *= require_self
  */
 body{
-font-family:
-helvetica neue,
-Helvetica,
-Arial,
-sans-serif,
-apple color emoji,
-segoe ui emoji,
-noto color emoji,
-android emoji,
-emojisymbols,
-emojione mozilla,
-twemoji mozilla,
-segoe ui symbol;
+    font-family:
+        helvetica neue,
+        Helvetica,
+        Arial,
+        sans-serif,
+        apple color emoji,
+        segoe ui emoji,
+        noto color emoji,
+        android emoji,
+        emojisymbols,
+        emojione mozilla,
+        twemoji mozilla,
+        segoe ui symbol;
+
+    height: 100%;
 }
 
 ul{

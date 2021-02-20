@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :corrent_user, only: [:destroy]
   
   def show
-    @post = Post.find(params[:id]).page(params[:page]).per(3)
+    @post = Post.find(params[:id])
     
   end
   
