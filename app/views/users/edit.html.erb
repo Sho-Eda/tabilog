@@ -8,9 +8,15 @@
       
   <!--<div class="row">-->
   <!--  <div class="col-sm-6 offset-sm-3">-->
-    <div class="form_all">
-        <%= form_with(model: @user, local: true) do |f| %>
+  
         
+  <div class="form_all">
+      <%= form_with(model: @user, local: true) do |f| %>
+      
+        <div>
+          <%= f.file_field :avatar %><br>
+        </div>
+          
         <div class="form_block">
           <%= f.label :name, "Name" %><br>
           <%= f.text_field :name, class: "form", placeholder: "お名前" %>
@@ -38,6 +44,6 @@
   
         <%= f.submit 'SAVE', class: 'btn btn-primary' %>
       
-      <% end %>
+    <% end %>
   </div>    
 </div>

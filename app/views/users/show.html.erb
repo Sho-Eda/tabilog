@@ -1,8 +1,13 @@
 <div class="user">
     <div class="user_show">
         <div class="user_info">
-            <div class="user_info_left">    
-              <img class="user_icon", src="<%= gravatar_url(@user, { size:200 }) %>" alt="image">
+            <div class="user_info_left">   
+            <% if @user.avatar.attached? %>
+                <%= image_tag @user.avatar.variant(combine_options:{gravity: :center, resize:"200x200^", crop:"200x200+0+0"}).processed, class: "user_icon" %>
+              <!--<img class="user_icon", src="<= gravatar_url(@user, { size:200 }) %>" alt="image">-->
+            <% else %>
+                <%= image_tag("default-image.png", :size => "170x170") %>
+            <% end %> 
             </div>
             
             <div class="user_info_right">

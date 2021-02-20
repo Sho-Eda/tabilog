@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   end
   
   def show
-    # set_user
     set_user
 
     @posts = @user.posts.order(id: :desc).page(params[:page])
@@ -74,7 +73,7 @@ class UsersController < ApplicationController
     @likes = @user.likes.page(params[:page])
     counts(@user)
   end  
- 
+  
   
   private
   
@@ -83,7 +82,7 @@ class UsersController < ApplicationController
   end
   
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :introduction)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :introduction, :avatar)
   end
   
   

@@ -2,7 +2,12 @@
   <ul class="list-unstyled">
     <% users.each do |user| %>
       <li class="media">
-        <img class="mr-2 rounded" src="<%= gravatar_url(user, { size: 50 }) %>" alt="">
+        <% if user.avatar.attached? %>
+          <%= image_tag user.avatar.variant(combine_options:{gravity: :center, resize:"50x50^", crop:"50x50+0+0"}).processed, class: "mr-2 rounded" %>
+          <!--<img class="mr-2 rounded" src="<= gravatar_url(user, { size: 50 }) %>" alt="">-->
+        <% else %>  
+          <%= image_tag("default-image.png", :size => "50x50") %>
+        <% end %>
         <div class="media-body">
           <div>
             <%= user.name %>
