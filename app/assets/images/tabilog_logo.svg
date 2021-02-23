@@ -5,9 +5,11 @@
 	 xml:space="preserve">
 <style type="text/css">
 	.st0{fill:none;}
-	.st1{font-family:'Corporate-Logo-Bold';}
-	.st2{font-size:44.6955px;}
+	.st1{display:none;enable-background:new    ;}
+	.st2{font-family:'Corporate-Logo-Bold';}
+	.st3{font-size:44.6955px;}
 </style>
 <polygon class="st0" points="183.7,86 -11.3,86 6.3,37.9 201.3,37.9 "/>
-<text transform="matrix(0.9397 0 -0.342 0.9397 35.8289 46.9791)" class="st1 st2">旅ログ</text>
+<text transform="matrix(0.9397 0 -0.342 0.9397 35.8283 46.9788)" class="st1 st2 st3">旅ログ</text>
+<text transform="matrix(0.9397 0 -0.342 0.9397 0.8257 46.9788)" class="st2 st3">TABILOG</text>
 </svg>

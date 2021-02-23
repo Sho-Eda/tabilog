@@ -29,6 +29,7 @@ body{
         segoe ui symbol;
 
     height: 100%;
+    margin: 0;
 }
 
 ul{
@@ -37,4 +38,26 @@ ul{
 
 a{
     color: black;
+    text-decoration: none;
+}
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {          
+  border: none;  
+  color: #696969;
+  /*background: #97999B;*/
+  font-size: 14px;
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {     
+  background: #F5DF4D;     
+  color: #F5DF4D;
+  /*border-radius: 15px;  */
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {        
+  /*border-radius: 15px;   */
+  /*background: #F5DF4D;   */
 }
