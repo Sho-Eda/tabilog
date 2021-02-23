@@ -16,9 +16,13 @@ Rails.application.routes.draw do
   end  
   # resource :users, only: [:edit, :update]
   
-  resources :posts, only: [:show, :new, :create, :destroy, :edit, :update] do
+  resources :posts do
     resources :comments
   end  
   resources :favorites, only: [:create, :destroy]  
   resources :relationships, only: [:create, :destroy]
+  
+  resources :tags do
+    get 'posts', to: 'posts#search'
+  end
 end
