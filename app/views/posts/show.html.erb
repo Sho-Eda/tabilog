@@ -1,23 +1,92 @@
 <div class="post_show">
-    <div class="post_box">
+  <div class="post_box">
+    <div class="post_box_left">
         <div class="post_image">
-            <%= image_tag @post.image.variant(combine_options:{gravity: :center, resize:"400x400^", crop:"500x500+0+0"}).processed %>
-        </div>    
+            <%= image_tag @post.image.variant(combine_options:{gravity: :center, resize:"500x500^", crop:"500x500+0+0"}).processed, class: "post_img" %>
+        </div>   
+     </div>    
+        
+    <div class="post_box_right">    
+      <div class="post_user_name_icon">
+        <div class="post_user_icon">
+           <% if @post.user.avatar.attached? %>
+                <%= image_tag @post.user.avatar.variant(combine_options:{gravity: :center, resize:"40x40^", crop:"40x40+0+0"}).processed, class: "user_icon" %>
+            <% else %>
+                <%= image_tag("default-image.png", :size => "40x40") %>
+            <% end %> 
+        </div>
+        
+        <div class="post_user_name">
+          <%= link_to @post.user.name, [@post.user] %>
+          <!--<= render 'users', users: @users %>-->
+        </div>  
+      </div>  
         
         <div class="post_content">
             <%= @post.content  %>
         </div>   
             
           <!--編集と削除-->
-        <div>
+        <div class="post_delete_edit">
           <% if current_user == @post.user %>
-            <%= link_to "削除", @post, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
-            <%= link_to "編集",  edit_post_path(@post), class: 'btn btn-success btn-sm' %>
+            <%= link_to "Delete", @post, method: :delete, data: { confirm: "You sure?" }, class: 'btn_delete' %>
+            <%= link_to "Edit", edit_post_path(@post), class: 'btn_edit' %>
+          <% else %>
+            <%= render 'favorites/favorite_button', post: @post %>
           <% end %>
         </div>
         <div>
-        <%= render 'favorites/favorite_button', post: @post %>
+        <!--<= render 'favorites/favorite_button', post: @post %>-->
         </div>    
         
-    </div>
+        <div class="comments">
+          <%= form_with model: [@post,@comment], local: true do |f|%>
+          <div class="comment_form">
+            <div>
+             <%= f.text_field :comment, placeholder: "コメントを追加", class: "post_comment" %>
+            </div>
+            <div>
+            <%= f.submit name= "Post", class: "btn" %>
+            </div>
+          </div>
+          <% end %>
+          
+          <div class="comments_list">
+           <% @comments.each do |c| %>
+           <div class="comment_user_name_icon">
+             <div class="comment_user_icon">
+                <% if c.user.avatar.attached? %>
+                    <%= image_tag c.user.avatar.variant(combine_options:{gravity: :center, resize:"20x20^", crop:"20x20+0+0"}).processed, class: "user_icon" %>
+                <% else %>
+                    <%= image_tag("default-image.png", :size => "20x20") %>
+                <% end %> 
+              </div>
+             
+              <div class="comment_name">
+                <%= link_to c.user.name, [c.user] %>
+              </div>
+            </div>  
+            <div class="comment_list">
+              <%= c.comment %>
+            </div>
+            <%  if c.user == current_user  %>
+              <div>
+                <%= link_to "delete", [@post, c], method: :delete, class: "btn" %>  
+              </div>
+            <% end %>
+          
+           <% end %>
+          </div>
+          <div class="paginate">
+            <%= paginate @comments, left: 1, right: 5 %>
+          </div>    
+        </div>
+            
+      <% @post_tags.each do |tag| %>
+        <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>
+        <%= "(#{tag.posts.count})" %>
+      <% end %>
+    
+  </div>  
+  </div>
 </div>    

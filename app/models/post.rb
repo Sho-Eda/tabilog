@@ -1,10 +1,23 @@
 class Post < ApplicationRecord
     belongs_to :user
-    validates :content, presence: false, length: { maximum: 255 }
-    # validates :images, blob: { content_type: %w(image/png image/jpg image/jpeg) }
     
-    # 画像サイズ
-    # image_tag @post.image.variant(resize_to_fill: [128, 128])
+    has_many :comments, dependent: :destroy
+    has_many :tag_maps, dependent: :destroy
+    has_many :tags, through: :tag_maps
+    
+    # validates :image, presence: true
+    validates :content, presence: false, length: { maximum: 255 }
     
     has_one_attached :image
+    
+    
+    # createアクションで記述したsave_tagインスタンスメソッド
+    def save_tag(savepost_tags)
+        savepost_tags.each do |new_name|
+        post_tag = Tag.find_or_create_by(name: new_name)
+        self.tags << post_tag
+        end
+    end
+    
+   
 end
