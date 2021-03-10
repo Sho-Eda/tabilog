@@ -1,20 +1,14 @@
 <div class="media_all">
   <ul class="list-unstyled">
     <% posts.each do |post| %>
-          
       <div class="media">
         <div class="media-body">
-          
             <% if post.image.attached? %>
-              <!--< post.image.each do |image| %>-->
                 <%= link_to (image_tag post.image.variant(combine_options:{gravity: :center, resize:"300x300^", crop:"300x300+0+0"}).processed), post_path(post), class: "post" %>
-              <!--< end %>-->
             <% end %>
         </div>
       </div>
-      
     <% end %>
-    
   </ul>
  <div class="posts_paginate">  
     <%= paginate posts %>
