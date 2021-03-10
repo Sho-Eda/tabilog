@@ -33,14 +33,11 @@ class User < ApplicationRecord
     end
     
     def following?(other_user)
-    self.followings.include?(other_user)
+       self.followings.include?(other_user)
     end
     
      def like(post)
-      # unless self == micropostによってお気に入りしようとしているmicropost が自分自身ではないかを検証している。
-      # 実行した User のインスタンスが self
       unless self == post
-      # 既にフォローされている場合にフォローが重複して保存されることがなくなる。
         self.favorites.find_or_create_by(post_id: post.id)
       end
      end
@@ -52,6 +49,6 @@ class User < ApplicationRecord
       
       
       def like?(post) 
-        self.likes.include?(post) #self.bookmarksで登録しているお気に入りを取得。include?(other_user) によって other_user が含まれていないかを確認しています。
+        self.likes.include?(post) 
       end
 end

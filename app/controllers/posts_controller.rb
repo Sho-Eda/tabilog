@@ -22,7 +22,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-    tag_list = params[:post][:tag_name].split(nil) 
+    tag_list = params[:post][:tag_name].split(',')
     
     if @post.save
       @post.save_tag(tag_list)    
@@ -47,7 +47,7 @@ class PostsController < ApplicationController
     
     if @post.update(post_params)
       flash[:success] = '更新しました'
-      redirect_to current_user
+      redirect_to root_url
       
     else
       flash.now[:danger] = '更新されませんでした'
@@ -76,7 +76,7 @@ class PostsController < ApplicationController
   def corrent_user
     @post = current_user.posts.find_by(id: params[:id])
     unless @post
-      redirect_to current_user
+      redirect_to root_url
     end
   end
   
