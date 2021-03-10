@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       get :likes
     end
   end  
-  # resource :users, only: [:edit, :update]
+
   
   resources :posts do
     resources :comments

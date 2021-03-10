@@ -35,9 +35,6 @@
             <%= render 'favorites/favorite_button', post: @post %>
           <% end %>
         </div>
-        <div>
-        <!--<= render 'favorites/favorite_button', post: @post %>-->
-        </div>    
         
         <div class="comments">
           <%= form_with model: [@post,@comment], local: true do |f|%>
@@ -81,11 +78,6 @@
             <%= paginate @comments, left: 1, right: 5 %>
           </div>    
         </div>
-            
-      <% @post_tags.each do |tag| %>
-        <%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>
-        <%= "(#{tag.posts.count})" %>
-      <% end %>
     
   </div>  
   </div>
